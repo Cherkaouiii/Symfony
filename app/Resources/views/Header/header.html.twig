@@ -1,0 +1,54 @@
+
+     
+
+<nav class="navbar navbar-default" style="border-bottom-style: ridge; border-bottom-color: orange;">
+  <div class="container-fluid" style="background-color: white;">
+      
+    <div class="navbar-header nav_bar_item_style">
+        <a class="navbar-brand" href="#" style="margin:0px;padding:0px;">
+            {% image '@ErUserBundle/Resources/public/fonts/logo.jpg' %}
+                    <img src="{{ asset_url }}" alt="Example" width="150" height="50" />
+            {% endimage %}
+        </a>
+    </div>
+      
+      
+    <ul class="nav navbar-nav" style="margin-left:30px;">
+      <li class="nav_bar_item_style"><a href="#" class="nav_bar_item_font">Home</a></li>
+      <li class="nav_bar_item_style"><a href="#" class="nav_bar_item_font">Demande</a></li>
+      <li class="nav_bar_item_style"><a href="#" class="nav_bar_item_font">Recrutement</a></li>
+      <li class="nav_bar_item_style"><a href="#" class="nav_bar_item_font">Tbd Manager</a></li>
+      <li class="nav_bar_item_style"><a href="#" class="nav_bar_item_font">Tbd RH</a></li>
+      <li class="dropdown nav_bar_item_style">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Administration <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ path("fos_user_registration_register") }}">Utilisateurs</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Liste des références uniques</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Liste des formations</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Liste des enjeux</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Liste des profits</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Liste des CV</a></li>
+            <li role="separator" class="divider"></li>
+             <li><a href="#">Liste des niveaux d'expérience</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Liste des fiches de fonctions</a></li>
+          </ul>
+        </li>
+    </ul>
+    
+    
+     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-in"></span> Déconnexion </a></li>
+        </ul>
+     {% endif %}       
+    
+      
+  </div>
+</nav>
+       

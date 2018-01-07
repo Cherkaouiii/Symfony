@@ -1,0 +1,10 @@
+.nav_bar_item_style {
+    border-right: 1px solid orange;
+    width: 140px;
+}
+
+.nav_bar_item_font {
+    text-align:center;
+    color:#003366;
+}
+

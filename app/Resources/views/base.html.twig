@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        
+        <title>
+            {% block title %}
+                Welcome To Mirion Technologies
+            {% endblock %}
+        </title>
+       
+        {% block stylesheets %}
+            {% stylesheets  'bundles/request/css/bootstrap.min.css'
+                            'bundles/bmatznerfontawesome/css/font-awesome.min.css'
+                            'bundles/eruser/css/header.css' filter='cssrewrite' 
+                            
+            %}
+                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        
+    </head>
+    <body>
+        
+        {% block header %} {% endblock %}
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        {% block footer %} {% endblock %}
+        
+        {% block javascripts %}
+            {% javascripts  filter='jsqueeze' 
+                        '@jquery_js'
+                        'bundles/request/js/bootstrap.min.js'
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+        
+    </body>
+</html>

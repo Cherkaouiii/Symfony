@@ -1,0 +1,12 @@
+<div class="form-group">
+    <div class="bg-danger">
+        {{ form_errors(form.name) }}
+    </div>
+    
+    {{ form_label(form.name, "Type de contrat :", {'label_attr':{'class':'col-sm-2 control-label'}} )}}
+    <div class="col-sm-10">
+        {{ form_widget(form.name, {'attr': {'class':'form-control'}} ) }}
+    </div>
+   
+</div>
+{{ form_rest(form) }}

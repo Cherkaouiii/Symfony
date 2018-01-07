@@ -14,7 +14,6 @@ class AdminController extends Controller{
      */
     public function adminPageAction(Request $request)
     {
-        return $this->render("ErUserBundle:Admin:adminPage.html.twig");
-        $test =1;
+        return $this->render("ErUserBundle:Admin:adminPage.html.twig");  
     }
 }

@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+            {{ parent() }}
+            {% stylesheets '@ErUserBundle/Resources/public/css/adminPage.css'                            
+            %}
+                <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+
+{% block header %}
+    {{ include(':Header:header.html.twig')}}
+{% endblock %}
+
+{% block body %}
+    <div class="row rowStyle">
+        <div class="col-md-4 colStyle" >
+            <a href="#" style="font-size: 20px;">Liste des références uniques</a>
+        </div>
+        <div class="col-md-4 colStyle">
+            <a href="#" style="font-size: 20px;">Liste des formations</a>            
+        </div>
+        <div class="col-md-4 colStyle">
+            <a href="#" style="font-size: 20px;">Liste des profits</a>             
+        </div>
+    </div>
+
+    <div class="row rowStyle">
+        <div class="col-md-4 colStyle">
+            <a href="#" style="font-size: 20px;">Liste des fiches de fonction</a>
+        </div>
+
+        <div class="col-md-4 colStyle" >
+            <a href="#" style="font-size: 20px;">Liste des enjeux </a>         
+        </div>
+
+        <div class="col-md-4 colStyle" style="font-size: 20px;">
+            <a href="#" style="font-size: 20px;">Liste des sources </a>         
+        </div>
+    </div>
+
+    <div class="row rowStyle">
+        <div class="col-md-4 colStyle">
+            <a href="#" style="font-size: 20px;">Liste des niveaux d'expérience</a>
+        </div>
+
+        <div class="col-md-4 colStyle" >
+            <a href="#" style="font-size: 20px;">Liste des nombres de CV </a>         
+        </div>
+
+        <div class="col-md-4 colStyle" style="font-size: 20px;">
+            <a href="#" style="font-size: 20px;">liste des métiers </a>         
+        </div>
+    </div>
+    
+     <div class="row rowStyle">
+        <div class="col-md-4 colStyle">
+            <a href="#" style="font-size: 20px;">Liste des type de contrat</a>
+        </div>
+
+    </div>
+{% endblock %}

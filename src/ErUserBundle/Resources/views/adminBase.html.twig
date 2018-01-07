@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets '@ErUserBundle/Resources/public/css/adminPage.css'                            
+    %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block header %}
+    {{ include(':Header:header.html.twig')}}
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'ErUserBundle::adminBase.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets '@RequestBundle/Resources/public/css/dataTables.bootstrap4.css'
+                   '@RequestBundle/Resources/public/css/jquery.dataTables.css'
+                   filter='cssrewrite'
+    %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 style="color: orange;">Liste des types de contrats</h2>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Nouveau</button>
+        </div>
+    </div>
+    
+    <table id="contractTypeList" border="grove 1px orange"> 
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Type de contrat</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contractType in contractTypeList %}
+                <tr>
+                    <td> {{ contractType.id }}</td>
+                    <td> {{ contractType.name }}</td>
+                    <td>
+                        <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Type de contrat</h4>
+                </div>
+                
+                <div class="modal-body">
+                    
+                    <div class="form_error"></div>
+                    
+                    <form method="POST" class="contractTypeForm" action="{{path('contractTypeCreate')}}">
+                        <div id="form_body">
+                            {% include 'RequestBundle:ContractType:contractTypeForm.html.twig' with {'form': form} %}
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-success"> Soumettre </button>
+                    </form>
+                
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            
+        </div>   
+    </div>
+        
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts '@RequestBundle/Resources/public/js/jquery.dataTables.js'
+                   '@RequestBundle/Resources/public/js/dataTables.bootstrap4.js'                  
+                   '@RequestBundle/Resources/public/js/contractTypeList.js'
+                                             
+    %}
+       {# <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>#}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        
+    {% endjavascripts %}
+{% endblock %}

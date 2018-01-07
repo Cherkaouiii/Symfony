@@ -1,0 +1,44 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+    
+    # Il est temps d'utiliser un vrai encodeur pour nos utilisateurs, car il est hors de question de stocker leur mot de passe en clair. 
+    encoders:
+        ErUserBundle\Entity\User : sha512
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        # Le bundle FOSUserBundle inclut son propre fournisseur en tant que service qui utilise notre entite User.
+        main:
+            id: fos_user.user_provider.username
+            
+    firewalls:
+        # Pare-feu main:
+        main:
+            # toutes les URL qui commencent par "/" seront protégés par ce pare-feu. on dit qu'ils sont derriére le pare-feu main.
+            pattern:        ^/
+            anonymous:      true
+            provider:       main
+            form_login:
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+                success_handler: authentication.handler.login_success_handler
+            logout:
+                path:       fos_user_security_logout
+                target:     fos_user_security_login
+            remember_me:
+                secret:     %secret%
+                
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            #form_login: ~

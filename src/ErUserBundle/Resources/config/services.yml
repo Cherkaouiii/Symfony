@@ -1,0 +1,11 @@
+parameters:
+    
+services:
+    authentication.handler.login_success_handler:
+        class: ErUserBundle\Security\LoginSuccessHandler
+        arguments: ['@router', '@security.authorization_checker']
+        
+    er_user.form.registration:
+        class: ErUserBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: er_user_registration }
